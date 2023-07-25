@@ -1,0 +1,19 @@
+#include<stdlib.h>
+#include<string.h>
+int main()
+{
+	FILE *fp1;
+	char city[20];
+	fp1=fopen("cities.txt","r");
+	if(fp1==NULL)
+	{
+		printf("file not found..");
+		exit(0);
+	}
+	while(!feof(fp1))
+	{
+		fscanf(fp1,"%s",&city);
+		printf("%s\n",city);
+	}
+	fclose(fp1);
+}
