@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int main()
+{
+	FILE *fp1;
+	char city[20],name[20];
+	int flag=0,stdcode;
+	fp1=fopen("cities.txt","r");
+	if(fp1==NULL)
+	{
+		printf("file not found..");
+		exit(0);
+	}
+	printf("\n enter city name to search:");
+	scanf("%s",&name);
+	while(!feof(fp1))
+	{
+		fscanf(fp1,"%s%d",&city,&stdcode);
+		if(strcmp(city,name)==0)
+		{
+			flag=1;
+			break;
+		}
+	}
+	if(flag==1)
+		printf("\ncity is found std code=%d",stdcode);
+	else
+		printf("\n city is not found");
+	fclose(fp1);
+}
