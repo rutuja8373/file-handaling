@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+	FILE *fp1;
+	int num,x,flag=0;
+	fp1=fopen("numbers.txt","r");
+	if(fp1==NULL)
+	{
+		printf("file not found..");
+		exit(0);
+	}
+	printf("\n enter no to search in file:");
+	scanf("%d",&x);
+	while(!feof(fp1))
+	{
+		fscanf(fp1,"%d",&num);
+		if(num==x)
+		{
+			flag=1;
+			break;
+		}
+	}
+	if(flag==1)
+		printf("\nno is found..");
+	else
+		printf("\n no is not found");
+	fclose(fp1);
+}
