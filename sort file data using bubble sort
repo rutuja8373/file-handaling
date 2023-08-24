@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct stud
+{
+	char name[20][20];
+	int per,rno;
+}s1[100],t;
+int n,i;
+void bubble(struct stud s1[],int n)
+{
+	int pass;
+	for(pass=1;pass<n;pass++)
+	{
+		for(i=0;i<n-pass;i++)
+		{
+			if(s1[i].per>s1[i+1].per)
+			{
+				t=s1[i];
+				s1[i]=s1[i+1];
+				s1[i+1]=t;
+			}
+		}
+	}
+	printf("\n BUBBLE SORTED NOS=");
+	for(i=0;i<n;i++)
+	{
+		printf("\n%s\t%d\t%d \t",s1[i].name,s1[i].rno,s1[i].per);
+	}
+}
+int main()
+{
+	FILE *fp1;
+	int i,n,pass;
+	fp1=fopen("bubble.txt","r");
+	if(fp1==NULL)
+	{
+		printf("\nfile not found..");
+		exit(0);
+	}
+	while(!feof(fp1))
+	{
+		fscanf(fp1,"%s%d%d",&s1[i].name,&s1[i].rno,&s1[i].per);
+		i++;
+	}
+	n=i-1;
+	bubble(s1,n);
+}
