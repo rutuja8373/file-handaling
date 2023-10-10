@@ -44,5 +44,5 @@ int main()
 	}
 	n=i-1;
 	bubble(s1,n);
-close(fp1)
+close(fp1);
 }
